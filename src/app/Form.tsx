@@ -1,6 +1,5 @@
 'use client'
 
-import {action} from "@/app/action";
 import {useForm} from "react-hook-form";
 import {useCallback} from "react";
 import {useRouter} from "next/navigation";
@@ -11,7 +10,10 @@ export function Form() {
     const router = useRouter()
 
     const onSubmit = useCallback(async () => {
-        await action();
+        await fetch('http://127.0.0.1:3075/oath/confirm_token/festus', {
+          method: 'POST',
+        });
+
         router.push(`?hello=${v4()}`)
     }, [router])
 
